@@ -550,17 +550,26 @@
       flex-wrap:wrap;
       gap:12px;
     }
-    .preview-box{
+    .form-status{
       display:none;
       margin-top:10px;
       padding:14px;
       border-radius:16px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:#eaf1ff;
-      white-space:pre-wrap;
+      border:1px solid transparent;
       font-size:14px;
-      word-break:break-word;
+      font-weight:600;
+    }
+    .form-status.success{
+      display:block;
+      background:rgba(52,211,153,.10);
+      border-color:rgba(52,211,153,.35);
+      color:#c9ffea;
+    }
+    .form-status.error{
+      display:block;
+      background:rgba(251,113,133,.10);
+      border-color:rgba(251,113,133,.35);
+      color:#ffd7df;
     }
 
     .faq{
@@ -713,9 +722,9 @@
               48-hour delivery • Stripe integrated • Mobile optimized
             </div>
 
-            <h1>I build your professional website fast — ready to launch and ready to sell</h1>
+            <h1>Professional website build in 48 hours — launch-ready and conversion-focused</h1>
             <p>
-              You send the business idea, service, or offer. I turn it into a clean, modern, conversion-focused website designed to help you look credible and get action fast.
+              Share your business idea, service, or offer and receive a clean, modern website built to strengthen credibility and drive action.
             </p>
 
             <div class="hero-actions">
@@ -725,7 +734,7 @@
 
             <div class="trust-row">
               <div class="trust-pill">Fast launch page</div>
-              <div class="trust-pill">Simple buying flow</div>
+              <div class="trust-pill">Secure Stripe checkout</div>
               <div class="trust-pill">Professional design</div>
               <div class="trust-pill">One revision included</div>
             </div>
@@ -842,7 +851,7 @@
               <div class="check">1</div>
               <div>
                 <strong>Pay securely through Stripe</strong>
-                <span>Your main checkout is already integrated into every major button on this page.</span>
+                <span>Checkout is protected by Stripe and available from every primary button on this page.</span>
               </div>
             </div>
 
@@ -857,8 +866,8 @@
             <div class="list-item">
               <div class="check">3</div>
               <div>
-                <strong>Your page gets built</strong>
-                <span>The site is structured for clarity, credibility, and fast launch readiness.</span>
+                <strong>Build starts right away</strong>
+                <span>Work begins after the form is submitted, with updates shared during the 48-hour turnaround window.</span>
               </div>
             </div>
 
@@ -900,9 +909,9 @@
       <div class="container">
         <div class="section-head">
           <div class="badge">After payment</div>
-          <h2>Exactly what happens next</h2>
+          <h2>What happens after checkout</h2>
           <p>
-            This part is now built into the page so buyers know what to do immediately after checkout.
+            Every step is clear so you can move from payment to launch without confusion.
           </p>
         </div>
 
@@ -910,17 +919,17 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <h3>Complete payment</h3>
-            <p>Click any “Buy Now” button and finish checkout through Stripe using your secure payment link.</p>
+            <p>Use any “Buy Now” button to complete secure checkout through Stripe.</p>
           </div>
           <div class="step-card">
             <div class="step-number">2</div>
-            <h3>Submit project details</h3>
-            <p>Fill in the intake form with your business info, preferred style, and website goals.</p>
+            <h3>Share your project details</h3>
+            <p>Submit your intake form with your business info, preferred style, and conversion goal.</p>
           </div>
           <div class="step-card">
             <div class="step-number">3</div>
-            <h3>Build begins immediately</h3>
-            <p>Once the payment and details are in, the site can move straight into the build process.</p>
+            <h3>Receive your launch-ready page</h3>
+            <p>Your website is delivered within 48 hours, including one revision to finalize your page.</p>
           </div>
         </div>
       </div>
@@ -933,38 +942,42 @@
             <div class="badge">Start your website</div>
             <h3>Send your project brief</h3>
             <p>
-              This form helps collect everything needed to build your page faster. It does not process payment — the Stripe buttons above handle that.
+              This intake form collects everything needed to build your page quickly and accurately.
             </p>
             <p>
-              Since this is a single HTML file with no backend connected, the form generates a ready-to-send project summary you can copy or send through email.
+              After payment, submit this form once and your details are received immediately for production.
             </p>
             <div class="list">
               <div class="list-item">
                 <div class="check">✓</div>
                 <div>
-                  <strong>Best flow</strong>
-                  <span>Customer pays through Stripe, returns to this page, sees the success message, then submits the project brief.</span>
+                  <strong>Secure checkout</strong>
+                  <span>Payments are processed through Stripe for protected card handling and confirmation.</span>
                 </div>
               </div>
               <div class="list-item">
                 <div class="check">✓</div>
                 <div>
-                  <strong>Recommended Stripe redirect</strong>
-                  <span>Set your success URL to: <br><strong>https://readytohireu.netlify.app/?payment=success</strong></span>
+                  <strong>Clear timeline</strong>
+                  <span>Delivery is completed within 48 hours once checkout and intake are complete.</span>
                 </div>
               </div>
               <div class="list-item">
                 <div class="check">✓</div>
                 <div>
-                  <strong>Project details email</strong>
-                  <span>All generated briefs are set to send to <strong>Sevada.Zadooryan@gmail.com</strong>.</span>
+                  <strong>Reliable submission</strong>
+                  <span>Your project details are captured through the site form and confirmed on-screen.</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="card" style="padding:22px;">
-            <form id="projectForm" novalidate>
+            <form id="projectForm" name="website-intake" method="POST" data-netlify="true" netlify-honeypot="company-name" novalidate>
+              <input type="hidden" name="form-name" value="website-intake" />
+              <p class="sr-only">
+                <label>Leave this field empty if you're human: <input name="company-name" /></label>
+              </p>
               <div class="form-row">
                 <div class="field">
                   <label for="name">Your Name</label>
@@ -1019,16 +1032,15 @@
               </div>
 
               <div class="helper">
-                This form creates a ready-made message you can copy or send by email directly to <strong>Sevada.Zadooryan@gmail.com</strong>.
+                Submissions are sent securely through the site and reviewed promptly.
               </div>
 
               <div class="form-actions">
-                <button type="button" class="btn btn-primary" id="generateBrief">Generate Project Brief</button>
-                <button type="button" class="btn btn-secondary" id="sendMail">Send by Email</button>
+                <button type="submit" class="btn btn-primary" id="submitBrief">Submit Project Brief</button>
                 <a class="btn btn-dark" href="https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01" target="_blank" rel="noopener noreferrer">Pay with Stripe</a>
               </div>
 
-              <div id="briefPreview" class="preview-box" aria-live="polite"></div>
+              <div id="briefStatus" class="form-status" role="status" aria-live="polite"></div>
             </form>
           </div>
         </div>
@@ -1040,49 +1052,49 @@
         <div class="section-head">
           <div class="badge">FAQ</div>
           <h2>Common questions</h2>
-          <p>Everything important is now built into the page.</p>
+          <p>Clear answers before you purchase.</p>
         </div>
 
         <div class="faq">
           <details>
             <summary>How does payment work?</summary>
             <div class="faq-content">
-              All main payment buttons on this page send visitors directly to your Stripe payment link for checkout.
+              All primary payment buttons open secure Stripe checkout for a one-time payment of $299.
             </div>
           </details>
 
           <details>
             <summary>What happens after someone pays?</summary>
             <div class="faq-content">
-              After checkout, Stripe should redirect them back to this page using the success URL. A success notice appears, and they can immediately complete the project brief form.
+              After checkout, complete the project intake form on this page. Once submitted, the build timeline starts and delivery is completed within 48 hours.
             </div>
           </details>
 
           <details>
-            <summary>Where do project details get sent?</summary>
+            <summary>How do I submit project details?</summary>
             <div class="faq-content">
-              The “Send by Email” button opens the visitor’s email app and sends the project brief to <strong>Sevada.Zadooryan@gmail.com</strong>.
+              Use the intake form in the “Start Your Website” section and click “Submit Project Brief.” A confirmation message appears after successful submission.
             </div>
           </details>
 
           <details>
-            <summary>Does this form automatically submit to a database?</summary>
+            <summary>How quickly is the site delivered?</summary>
             <div class="faq-content">
-              Not by itself. This is a true single HTML file, so there is no backend attached. The form currently generates a formatted message and can open the user’s email app. For full automatic storage, you would connect Formspree, Netlify Forms, or another backend later.
+              Delivery is completed within 48 hours after payment and receipt of your complete intake details.
             </div>
           </details>
 
           <details>
-            <summary>Can I still use this right away?</summary>
+            <summary>What is included in the package?</summary>
             <div class="faq-content">
-              Yes. Payment is already integrated, and the intake flow is usable immediately. The only thing that is not fully automated is saving form submissions to a server.
+              The package includes a custom one-page website, mobile-responsive layout, conversion-focused sections, and one revision.
             </div>
           </details>
 
           <details>
-            <summary>What Stripe redirect URL should I set?</summary>
+            <summary>Is there a recurring subscription?</summary>
             <div class="faq-content">
-              Set the success URL to <strong>https://readytohireu.netlify.app/?payment=success</strong> and the cancel URL to <strong>https://readytohireu.netlify.app/?payment=cancel</strong>.
+              No. Pricing is a flat one-time payment of $299.
             </div>
           </details>
         </div>
@@ -1109,8 +1121,6 @@
     (function () {
       'use strict';
 
-      const INTAKE_EMAIL = 'Sevada.Zadooryan@gmail.com';
-
       const params = new URLSearchParams(window.location.search);
       const payment = params.get('payment');
 
@@ -1134,45 +1144,17 @@
         cancelBox.style.display = 'block';
       }
 
-      const generateBtn = document.getElementById('generateBrief');
-      const sendMailBtn = document.getElementById('sendMail');
-      const preview = document.getElementById('briefPreview');
+      const submitBtn = document.getElementById('submitBrief');
+      const statusBox = document.getElementById('briefStatus');
       const form = document.getElementById('projectForm');
 
-      if (!generateBtn || !sendMailBtn || !preview || !form) return;
+      if (!submitBtn || !statusBox || !form) return;
 
-      const fields = {
-        name: document.getElementById('name'),
-        email: document.getElementById('email'),
-        business: document.getElementById('business'),
-        industry: document.getElementById('industry'),
-        offer: document.getElementById('offer'),
-        audience: document.getElementById('audience'),
-        goal: document.getElementById('goal'),
-        style: document.getElementById('style'),
-        details: document.getElementById('details')
-      };
-
-      function sanitize(value) {
-        return String(value || '').trim();
-      }
-
-      function getFormData() {
-        return {
-          name: sanitize(fields.name && fields.name.value),
-          email: sanitize(fields.email && fields.email.value),
-          business: sanitize(fields.business && fields.business.value),
-          industry: sanitize(fields.industry && fields.industry.value),
-          offer: sanitize(fields.offer && fields.offer.value),
-          audience: sanitize(fields.audience && fields.audience.value),
-          goal: sanitize(fields.goal && fields.goal.value),
-          style: sanitize(fields.style && fields.style.value),
-          details: sanitize(fields.details && fields.details.value)
-        };
-      }
+      const nameField = document.getElementById('name');
+      const emailField = document.getElementById('email');
 
       function validateRequired() {
-        const requiredFields = [fields.name, fields.email];
+        const requiredFields = [nameField, emailField];
         for (const field of requiredFields) {
           if (field && !field.value.trim()) {
             field.focus();
@@ -1181,60 +1163,62 @@
           }
         }
 
-        if (fields.email && fields.email.value && !fields.email.checkValidity()) {
-          fields.email.focus();
-          fields.email.reportValidity();
+        if (emailField && emailField.value && !emailField.checkValidity()) {
+          emailField.focus();
+          emailField.reportValidity();
           return false;
         }
 
         return true;
       }
 
-      function buildBrief() {
-        const data = getFormData();
-
-        return (
-`NEW WEBSITE PROJECT BRIEF
-
-Name: ${data.name || 'N/A'}
-Email: ${data.email || 'N/A'}
-Business Name: ${data.business || 'N/A'}
-Industry / Niche: ${data.industry || 'N/A'}
-Offer: ${data.offer || 'N/A'}
-Target Audience: ${data.audience || 'N/A'}
-Main Goal: ${data.goal || 'N/A'}
-Preferred Style: ${data.style || 'N/A'}
-
-Extra Details:
-${data.details || 'N/A'}
-`
-        );
+      function setStatus(message, type) {
+        statusBox.className = 'form-status';
+        if (type) {
+          statusBox.classList.add(type);
+        }
+        statusBox.textContent = message;
       }
 
-      function showPreview() {
-        const brief = buildBrief();
-        preview.style.display = 'block';
-        preview.textContent = brief;
+      async function submitIntakeForm() {
+        const data = new FormData(form);
+        const payload = new URLSearchParams();
+
+        for (const [key, value] of data.entries()) {
+          payload.append(key, value.toString());
+        }
+
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString()
+        });
+
+        return response.ok;
       }
 
-      generateBtn.addEventListener('click', function () {
-        if (!validateRequired()) return;
-        showPreview();
-      }, { passive: true });
-
-      sendMailBtn.addEventListener('click', function () {
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
         if (!validateRequired()) return;
 
-        const brief = buildBrief();
-        preview.style.display = 'block';
-        preview.textContent = brief;
+        submitBtn.disabled = true;
+        setStatus('Submitting your project brief...', null);
 
-        const subject = encodeURIComponent('New Website Project Brief');
-        const body = encodeURIComponent(brief);
-        const mailtoUrl = `mailto:${INTAKE_EMAIL}?subject=${subject}&body=${body}`;
+        try {
+          const ok = await submitIntakeForm();
 
-        window.location.href = mailtoUrl;
-      }, { passive: true });
+          if (!ok) {
+            throw new Error('Submission failed');
+          }
+
+          setStatus('Project brief submitted successfully. Confirmation received and work can begin.', 'success');
+          form.reset();
+        } catch (error) {
+          setStatus('Submission could not be completed. Please retry in a moment or contact support.', 'error');
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
     })();
   </script>
 </body>
