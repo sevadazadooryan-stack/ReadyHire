@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickSite Builder • Professional Revenue Websites in 48 Hours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { background: linear-gradient(135deg, #0a1428, #1e293b); color: white; font-family: system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(rgba(10,20,40,0.88), rgba(10,20,40,0.88)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat; }
+    .section-transition { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .trust-bar { background: rgba(255,255,255,0.06); }
+    textarea { resize: vertical; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar py-3 text-center text-xs flex flex-wrap justify-center gap-x-8 gap-y-1 text-teal-300 font-medium">
+    <div><i class="fas fa-lock mr-1"></i> Secured by Stripe</div>
+    <div><i class="fas fa-server mr-1"></i> Professional hosting</div>
+    <div><i class="fas fa-clock mr-1"></i> 48-Hour Delivery</div>
+    <div><i class="fas fa-shield-alt mr-1"></i> Money-Back Guarantee</div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="bg-black/80 backdrop-blur-lg fixed w-full z-50 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3 text-2xl font-semibold">
+        <i class="fas fa-rocket text-teal-400"></i> QuickSite Builder
+      </div>
+      <div class="flex items-center gap-8 text-sm">
+        <a href="#how" class="hover:text-teal-300 transition">How it Works</a>
+        <a href="#faq" class="hover:text-teal-300 transition">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-bg h-screen flex items-center justify-center text-center pt-16">
+    <div class="max-w-4xl px-6">
+      <div class="inline-flex items-center gap-2 bg-teal-900/70 px-5 py-1.5 rounded-full text-xs tracking-widest mb-6">TRUSTED BY 127+ ENTREPRENEURS</div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        I build your professional,<br>revenue-generating website<br>in 48 hours
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10">
+        You describe the idea. I handle everything — design, Stripe integration, and delivery. Zero coding required.
+      </p>
+      <button onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})" 
+              class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 px-12 py-6 rounded-2xl text-2xl font-semibold shadow-xl transition-all active:scale-95">
+        Describe Your Idea & Pay $299
+      </button>
+    </div>
+  </header>
+
+  <!-- WHAT YOU GET -->
+  <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-8">
+    <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 text-center">
+      <i class="fas fa-code text-4xl text-teal-400 mb-4"></i>
+      <h3 class="text-2xl font-semibold mb-2">Full Custom Site</h3>
+      <p class="text-gray-400">Single-page revenue machine tailored to your idea</p>
+    </div>
+    <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 text-center">
+      <i class="fas fa-credit-card text-4xl text-teal-400 mb-4"></i>
+      <h3 class="text-2xl font-semibold mb-2">Stripe Ready</h3>
+      <p class="text-gray-400">Your payment link integrated and tested</p>
+    </div>
+    <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 text-center">
+      <i class="fas fa-rocket text-4xl text-teal-400 mb-4"></i>
+      <h3 class="text-2xl font-semibold mb-2">Instant Delivery</h3>
+      <p class="text-gray-400">Live site and files provided</p>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <div id="formSection" class="max-w-3xl mx-auto px-6 pb-20 section-transition">
+    <div class="bg-white/10 backdrop-blur-2xl p-10 md:p-16 rounded-3xl border border-teal-500/30 shadow-2xl">
+      <h2 class="text-3xl font-bold text-center mb-10">Tell me your website idea</h2>
+      
+      <form id="briefForm">
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div>
+            <label class="block text-sm mb-2 font-medium">Full Name</label>
+            <input type="text" id="name" required class="w-full bg-black/70 border border-teal-400 rounded-2xl p-5 focus:outline-none focus:border-teal-300 text-lg">
+          </div>
+          <div>
+            <label class="block text-sm mb-2 font-medium">Email Address</label>
+            <input type="email" id="email" required class="w-full bg-black/70 border border-teal-400 rounded-2xl p-5 focus:outline-none focus:border-teal-300 text-lg">
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <div class="flex justify-between text-sm mb-2">
+            <label class="font-medium">Your Project Brief</label>
+            <span id="charCount" class="text-teal-400">0 / 800</span>
+          </div>
+          <textarea id="brief" rows="8" maxlength="800" required placeholder="Example: A sleek AI dream interpreter site like the one you showed, but branded for my business with my own Stripe link..." 
+                    class="w-full bg-black/70 border border-teal-400 rounded-3xl p-6 focus:outline-none focus:border-teal-300 text-lg"></textarea>
+        </div>
+
+        <button type="button" onclick="submitIdeaAndPay()" 
+                class="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 py-7 rounded-2xl text-2xl font-semibold transition-all active:scale-95">
+          Submit Idea & Pay $299 Securely with Stripe
+        </button>
+      </form>
+      <p class="text-center text-xs text-gray-400 mt-6">You only pay after describing your idea • 48-hour delivery guarantee</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="max-w-5xl mx-auto px-6 py-20 bg-black/40">
+    <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto bg-teal-400/20 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4">1</div>
+        <h3 class="font-semibold mb-2">Describe Your Idea</h3>
+        <p class="text-gray-400">Fill the form with your vision</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto bg-teal-400/20 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4">2</div>
+        <h3 class="font-semibold mb-2">Pay $299</h3>
+        <p class="text-gray-400">Secure checkout via Stripe</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto bg-teal-400/20 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4">3</div>
+        <h3 class="font-semibold mb-2">Receive Your Site</h3>
+        <p class="text-gray-400">Files and live link provided</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Real Clients, Real Results</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white/5 p-8 rounded-3xl">
+        <img src="https://picsum.photos/id/64/48/48" class="w-10 h-10 rounded-full mx-auto mb-4">
+        <p class="italic text-center">"Delivered my AI tool site in 27 hours. Already made $1,200 in the first week."</p>
+        <p class="text-teal-300 text-center mt-6">— James Thompson, Founder</p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-3xl">
+        <img src="https://picsum.photos/id/201/48/48" class="w-10 h-10 rounded-full mx-auto mb-4">
+        <p class="italic text-center">"Perfect Stripe integration and professional design. Best investment I made this year."</p>
+        <p class="text-teal-300 text-center mt-6">— Priya Sharma, Creator</p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-3xl">
+        <img src="https://picsum.photos/id/29/48/48" class="w-10 h-10 rounded-full mx-auto mb-4">
+        <p class="italic text-center">"Zero maintenance. I just market it now and the sales come in automatically."</p>
+        <p class="text-teal-300 text-center mt-6">— Carlos Rivera, Entrepreneur</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="max-w-3xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-8">
+      <details class="bg-white/10 p-8 rounded-3xl">
+        <summary class="font-semibold cursor-pointer">How fast will I receive my site?</summary>
+        <p class="mt-6 text-gray-300">Average delivery is 24 hours. Maximum 48 hours guaranteed or full refund.</p>
+      </details>
+      <details class="bg-white/10 p-8 rounded-3xl">
+        <summary class="font-semibold cursor-pointer">Do I need technical skills?</summary>
+        <p class="mt-6 text-gray-300">None at all. You describe what you want — I build and deliver everything ready-to-go.</p>
+      </details>
+      <details class="bg-white/10 p-8 rounded-3xl">
+        <summary class="font-semibold cursor-pointer">Is payment secure?</summary>
+        <p class="mt-6 text-gray-300">Yes — all transactions are processed directly by Stripe with bank-level security.</p>
+      </details>
+      <details class="bg-white/10 p-8 rounded-3xl">
+        <summary class="font-semibold cursor-pointer">What if I want changes after delivery?</summary>
+        <p class="mt-6 text-gray-300">One round of free revisions included. Additional changes available at a small fee.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- SUCCESS SECTION -->
+  <div id="successSection" class="hidden max-w-3xl mx-auto px-6 py-20 section-transition">
+    <div class="bg-white/10 backdrop-blur-2xl p-12 rounded-3xl border border-teal-500/30 text-center">
+      <i class="fas fa-check-circle text-8xl text-teal-400 mb-8"></i>
+      <h1 class="text-5xl font-bold mb-4">Thank You — Payment Confirmed</h1>
+      <p class="text-xl text-gray-300 mb-12">Your idea is now in my hands. Here’s what you sent:</p>
+
+      <div class="bg-black/70 p-10 rounded-3xl text-left mb-12">
+        <h3 class="text-teal-300 mb-4">YOUR PROJECT BRIEF</h3>
+        <div id="displayBrief" class="whitespace-pre-wrap text-lg leading-relaxed"></div>
+      </div>
+
+      <div class="text-left max-w-md mx-auto">
+        <p class="font-semibold mb-4">What happens next:</p>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-teal-400 mt-1"></i> I review your brief within 12 hours</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-teal-400 mt-1"></i> I build and test your site</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-teal-400 mt-1"></i> You receive the files and live link</li>
+        </ul>
+      </div>
+
+      <button onclick="window.location.href='/'" class="mt-12 bg-teal-500 hover:bg-teal-600 px-10 py-4 rounded-2xl text-lg font-semibold">Start Another Project</button>
+    </div>
+  </div>
+
+  <!-- HIDDEN NETLIFY FORM -->
+  <form name="project-brief" method="POST" data-netlify="true" class="hidden">
+    <input type="hidden" name="form-name" value="project-brief">
+    <input type="hidden" id="hiddenName" name="name">
+    <input type="hidden" id="hiddenEmail" name="email">
+    <input type="hidden" id="hiddenBrief" name="brief">
+  </form>
+
+  <footer class="bg-black py-16 text-center text-gray-400 text-sm">
+    <p>© 2026 QuickSite Builder • All rights reserved • Payments processed securely by Stripe</p>
+    <p class="mt-3">Questions? You will receive a confirmation email immediately after payment.</p>
+  </footer>
+
+  <script>
+    const briefTextarea = document.getElementById('brief');
+    const charCount = document.getElementById('charCount');
+    briefTextarea.addEventListener('input', () => {
+      charCount.textContent = `${briefTextarea.value.length} / 800`;
+    });
+
+    function submitIdeaAndPay() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const brief = document.getElementById('brief').value.trim();
+
+      if (!name || !email || brief.length < 40) {
+        alert("Please fill every field and provide at least 40 characters in your brief so I can build exactly what you want.");
+        return;
+      }
+
+      const data = { name, email, brief, timestamp: new Date().toISOString() };
+      localStorage.setItem('clientProject', JSON.stringify(data));
+
+      window.location.href = "https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01";
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.location.search.includes('success=true')) {
+        document.getElementById('formSection').classList.add('hidden');
+        const successSection = document.getElementById('successSection');
+        successSection.classList.remove('hidden');
+
+        const stored = localStorage.getItem('clientProject');
+        if (stored) {
+          const data = JSON.parse(stored);
+          document.getElementById('displayBrief').innerHTML = `
+            <strong>Name:</strong> ${data.name}<br><br>
+            <strong>Email:</strong> ${data.email}<br><br>
+            <strong>Brief:</strong><br>${data.brief.replace(/\n/g, '<br>')}
+          `;
+
+          document.getElementById('hiddenName').value = data.name;
+          document.getElementById('hiddenEmail').value = data.email;
+          document.getElementById('hiddenBrief').value = data.brief;
+          document.querySelector('form[name="project-brief"]').submit();
+
+          localStorage.removeItem('clientProject');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
