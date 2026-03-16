@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ready To Hire U | Professional Website Build in 48 Hours</title>
+  <meta
+    name="description"
+    content="Get a professional, mobile-friendly, conversion-focused website built in 48 hours. Fast turnaround, clean design, and simple setup."
+  />
+  <meta name="theme-color" content="#08111f" />
+  <meta name="color-scheme" content="dark" />
+  <style>
+    :root{
+      --bg:#08111f;
+      --bg-soft:#0e1830;
+      --card:#121d38;
+      --card-2:#0d1730;
+      --text:#f5f7ff;
+      --muted:#b5c0df;
+      --line:rgba(255,255,255,.10);
+      --brand:#5eead4;
+      --brand-2:#7c3aed;
+      --accent:#f59e0b;
+      --success:#34d399;
+      --danger:#fb7185;
+      --shadow:0 20px 50px rgba(0,0,0,.35);
+      --radius:22px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--text);
+      line-height:1.6;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,.15), transparent 28%),
+        radial-gradient(circle at top right, rgba(94,234,212,.12), transparent 24%),
+        linear-gradient(180deg, #07101d 0%, #0a1327 100%);
+    }
+
+    img{max-width:100%; display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+    .section{
+      padding:82px 0;
+      content-visibility:auto;
+      contain-intrinsic-size:1px 900px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      background:rgba(7,16,29,.76);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:15px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color:#07111c;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow:0 10px 30px rgba(94,234,212,.20);
+      flex:0 0 auto;
+    }
+    .nav-links{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .nav-links a:hover{color:var(--text)}
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:14px;
+      color:#dffcf7;
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--brand);
+      box-shadow:0 0 14px var(--brand);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 20px;
+      border-radius:16px;
+      font-weight:800;
+      border:1px solid transparent;
+      transition:transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
+      cursor:pointer;
+      min-height:52px;
+      font:inherit;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    summary:focus-visible{
+      outline:2px solid var(--brand);
+      outline-offset:3px;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--brand), #41dcc7);
+      color:#07111c;
+      box-shadow:0 16px 35px rgba(94,234,212,.20);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+      color:var(--text);
+    }
+    .btn-dark{
+      background:#0c1530;
+      border-color:rgba(255,255,255,.08);
+      color:#fff;
+    }
+
+    .hero{
+      padding:70px 0 50px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:32px;
+      align-items:center;
+    }
+    .hero h1{
+      font-size:clamp(38px,6vw,68px);
+      line-height:1.02;
+      margin:18px 0;
+      letter-spacing:-1.8px;
+    }
+    .hero p{
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 24px;
+      max-width:740px;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:22px;
+    }
+    .trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .trust-pill{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:#d9e3ff;
+      font-size:14px;
+    }
+
+    .hero-card,
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:24px;
+      overflow:hidden;
+      position:relative;
+      contain:layout paint;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(135deg, rgba(94,234,212,.16), rgba(124,58,237,.18), transparent 55%);
+      pointer-events:none;
+    }
+    .hero-card > *{position:relative; z-index:1}
+
+    .mini-window{
+      background:#0b1126;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .mini-top{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:#0c1430;
+    }
+    .mini-top span{
+      width:10px;height:10px;border-radius:50%;
+      background:#334155;
+    }
+    .mini-top span:nth-child(1){background:#fb7185}
+    .mini-top span:nth-child(2){background:#f59e0b}
+    .mini-top span:nth-child(3){background:#34d399}
+    .mini-body{padding:18px}
+    .mock-block{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:18px;
+      margin-bottom:14px;
+    }
+    .mock-title{
+      font-size:23px;
+      font-weight:800;
+      margin:0 0 8px;
+    }
+    .mock-line{
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      margin:10px 0;
+    }
+    .w80{width:80%}
+    .w60{width:60%}
+    .w40{width:40%}
+    .mock-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .mock-box{
+      background:#111938;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:14px;
+      padding:14px;
+      min-height:92px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:28px;
+    }
+    .stat{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px;
+    }
+    .stat strong{
+      display:block;
+      font-size:28px;
+      margin-bottom:6px;
+    }
+    .stat span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .section-head{
+      text-align:center;
+      max-width:820px;
+      margin:0 auto 34px;
+    }
+    .section-head h2{
+      font-size:clamp(28px,4vw,46px);
+      line-height:1.08;
+      margin:12px 0;
+      letter-spacing:-1px;
+    }
+    .section-head p{
+      color:var(--muted);
+      margin:0;
+      font-size:17px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .card{
+      padding:24px;
+    }
+    .icon{
+      width:54px;height:54px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(94,234,212,.18), rgba(124,58,237,.25));
+      border:1px solid rgba(255,255,255,.10);
+      font-size:24px;
+      margin-bottom:16px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:21px;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .list{
+      display:grid;
+      gap:14px;
+    }
+    .list-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px 18px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .check{
+      width:28px;height:28px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(52,211,153,.18);
+      color:#a7f3d0;
+      font-weight:900;
+      flex:0 0 auto;
+    }
+    .list-item strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .list-item span{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .pricing{
+      position:relative;
+      overflow:hidden;
+    }
+    .pricing:after{
+      content:"FASTEST START";
+      position:absolute;
+      top:18px;
+      right:-40px;
+      transform:rotate(35deg);
+      background:linear-gradient(135deg, var(--accent), #ffd166);
+      color:#3a2100;
+      font-weight:900;
+      padding:8px 46px;
+      font-size:12px;
+      letter-spacing:.8px;
+    }
+    .price{
+      display:flex;
+      align-items:flex-end;
+      gap:6px;
+      margin:10px 0 18px;
+    }
+    .price strong{
+      font-size:58px;
+      line-height:1;
+    }
+    .price span{
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+    .pricing ul{
+      list-style:none;
+      padding:0;
+      margin:20px 0 24px;
+      display:grid;
+      gap:12px;
+    }
+    .pricing li{
+      position:relative;
+      padding-left:28px;
+      color:#edf2ff;
+    }
+    .pricing li:before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--success);
+      font-weight:900;
+    }
+
+    .notice{
+      display:none;
+      margin:0 auto 26px;
+      max-width:900px;
+      padding:18px 20px;
+      border-radius:18px;
+      border:1px solid;
+      font-weight:600;
+    }
+    .notice.success{
+      background:rgba(52,211,153,.10);
+      border-color:rgba(52,211,153,.35);
+      color:#c9ffea;
+    }
+    .notice.cancel{
+      background:rgba(251,113,133,.10);
+      border-color:rgba(251,113,133,.35);
+      color:#ffd7df;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .step-card{
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:rgba(255,255,255,.03);
+    }
+    .step-number{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      background:linear-gradient(135deg, rgba(94,234,212,.16), rgba(124,58,237,.22));
+      margin-bottom:14px;
+    }
+    .step-card h3{
+      margin:0 0 8px;
+      font-size:20px;
+    }
+    .step-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .intake-panel{
+      display:grid;
+      grid-template-columns:1fr .95fr;
+      gap:24px;
+      padding:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+    }
+    .intake-copy h3{
+      font-size:34px;
+      line-height:1.1;
+      margin:0 0 14px;
+      letter-spacing:-.8px;
+    }
+    .intake-copy p{
+      color:var(--muted);
+      margin:0 0 18px;
+    }
+
+    form{
+      display:grid;
+      gap:14px;
+    }
+    .field{
+      display:grid;
+      gap:8px;
+    }
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    label{
+      font-size:14px;
+      color:#d7e3ff;
+      font-weight:700;
+    }
+    input, textarea, select{
+      width:100%;
+      background:#0d1530;
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      border-radius:16px;
+      padding:14px 16px;
+      outline:none;
+      font:inherit;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color:rgba(94,234,212,.65);
+      box-shadow:0 0 0 4px rgba(94,234,212,.10);
+    }
+    textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+    .helper{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .form-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .preview-box{
+      display:none;
+      margin-top:10px;
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#eaf1ff;
+      white-space:pre-wrap;
+      font-size:14px;
+      word-break:break-word;
+    }
+
+    .faq{
+      display:grid;
+      gap:14px;
+      max-width:900px;
+      margin:0 auto;
+    }
+    details{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:20px 22px;
+      font-weight:700;
+      position:relative;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary:after{
+      content:"+";
+      position:absolute;
+      right:20px;
+      top:18px;
+      font-size:24px;
+      color:var(--brand);
+    }
+    details[open] summary:after{content:"–"}
+    .faq-content{
+      padding:0 22px 20px;
+      color:var(--muted);
+    }
+
+    .footer{
+      padding:30px 0 50px;
+      color:var(--muted);
+    }
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      border-top:1px solid var(--line);
+      padding-top:24px;
+    }
+
+    .sticky-cta{
+      position:fixed;
+      left:16px;
+      right:16px;
+      bottom:16px;
+      z-index:60;
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:18px;
+      background:rgba(9,15,30,.92);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:var(--shadow);
+    }
+    .sticky-cta strong{display:block}
+    .sticky-cta span{color:var(--muted); font-size:13px}
+
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .split,
+      .grid-3,
+      .steps,
+      .intake-panel,
+      .stats{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 768px){
+      .nav-links{display:none}
+      .hero h1{font-size:42px}
+      .form-row{grid-template-columns:1fr}
+      .section{padding:62px 0}
+      .sticky-cta{display:flex}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Ready To Hire U homepage">
+        <div class="brand-mark" aria-hidden="true">R</div>
+        <div>Ready To Hire U</div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#services">What You Get</a>
+        <a href="#process">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#start">Start</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="btn btn-primary" href="https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01" target="_blank" rel="noopener noreferrer">Pay Now</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div id="paymentSuccess" class="notice success" role="status" aria-live="polite">
+          Payment received. Your next step is to send your project details in the intake form below. Scroll to the “Start Your Website” section and submit your brief.
+        </div>
+
+        <div id="paymentCancel" class="notice cancel" role="status" aria-live="polite">
+          Your checkout was canceled. You can review the page and try again whenever you're ready.
+        </div>
+
+        <div class="hero-grid">
+          <div>
+            <div class="badge">
+              <span class="dot" aria-hidden="true"></span>
+              48-hour delivery • Stripe integrated • Mobile optimized
+            </div>
+
+            <h1>I build your professional website fast — ready to launch and ready to sell</h1>
+            <p>
+              You send the business idea, service, or offer. I turn it into a clean, modern, conversion-focused website designed to help you look credible and get action fast.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01" target="_blank" rel="noopener noreferrer">Buy Now for $299</a>
+              <a class="btn btn-secondary" href="#start">Send Project Details</a>
+            </div>
+
+            <div class="trust-row">
+              <div class="trust-pill">Fast launch page</div>
+              <div class="trust-pill">Simple buying flow</div>
+              <div class="trust-pill">Professional design</div>
+              <div class="trust-pill">One revision included</div>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>48 hrs</strong>
+                <span>Maximum delivery time</span>
+              </div>
+              <div class="stat">
+                <strong>$299</strong>
+                <span>Flat one-time price</span>
+              </div>
+              <div class="stat">
+                <strong>1 page</strong>
+                <span>Focused conversion build</span>
+              </div>
+              <div class="stat">
+                <strong>Mobile</strong>
+                <span>Responsive on all devices</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="mini-window" aria-hidden="true">
+              <div class="mini-top">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mini-body">
+                <div class="mock-block">
+                  <div class="mock-title">Clear Offer. Clean Design. Strong CTA.</div>
+                  <div class="mock-line w80"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line w60"></div>
+                </div>
+
+                <div class="mock-grid">
+                  <div class="mock-box">
+                    <div class="mock-line w60"></div>
+                    <div class="mock-line"></div>
+                    <div class="mock-line w40"></div>
+                  </div>
+                  <div class="mock-box">
+                    <div class="mock-line w60"></div>
+                    <div class="mock-line"></div>
+                    <div class="mock-line w40"></div>
+                  </div>
+                  <div class="mock-box">
+                    <div class="mock-line w60"></div>
+                    <div class="mock-line"></div>
+                    <div class="mock-line w40"></div>
+                  </div>
+                </div>
+
+                <div class="mock-block" style="margin-top:14px;">
+                  <div class="mock-line w40"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line w80"></div>
+                  <div class="mock-line w60"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="badge">What you get</div>
+          <h2>Everything needed to launch a clean, professional website quickly</h2>
+          <p>
+            The goal is simple: make your business look credible, make your offer clear, and make it easy for visitors to take action.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Fast positioning</h3>
+            <p>Your headline, offer, and call-to-action are structured so visitors understand what you do within seconds.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">💳</div>
+            <h3>Revenue-ready layout</h3>
+            <p>The page is built for buying, booking, or lead generation with action sections placed where they matter most.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📱</div>
+            <h3>Mobile-first design</h3>
+            <p>Your site is designed to look polished and readable on mobile, where a large share of traffic usually lands first.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="container split">
+        <div>
+          <div class="section-head" style="text-align:left; margin:0 0 24px;">
+            <div class="badge">How it works</div>
+            <h2>Simple process. Fast turnaround. No technical headache.</h2>
+            <p>
+              You do not need to code, design, or figure out how to structure the page. The process is designed to stay simple.
+            </p>
+          </div>
+
+          <div class="list">
+            <div class="list-item">
+              <div class="check">1</div>
+              <div>
+                <strong>Pay securely through Stripe</strong>
+                <span>Your main checkout is already integrated into every major button on this page.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="check">2</div>
+              <div>
+                <strong>Send your project brief</strong>
+                <span>Fill out the intake form with your business name, offer, style, and what action you want visitors to take.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="check">3</div>
+              <div>
+                <strong>Your page gets built</strong>
+                <span>The site is structured for clarity, credibility, and fast launch readiness.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="check">4</div>
+              <div>
+                <strong>Launch and start promoting</strong>
+                <span>You receive the page ready for use and can immediately start sending traffic to it.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="pricing" class="card pricing">
+          <div class="badge">Launch package</div>
+          <h3 style="margin:14px 0 0; font-size:28px;">Professional single-page website build</h3>
+
+          <div class="price">
+            <strong>$299</strong>
+            <span>one-time</span>
+          </div>
+
+          <ul>
+            <li>Custom single-page website</li>
+            <li>Strong hero section and CTA structure</li>
+            <li>Clean modern layout</li>
+            <li>Mobile responsive design</li>
+            <li>Action-focused sections</li>
+            <li>One revision included</li>
+            <li>Delivery within 48 hours</li>
+          </ul>
+
+          <a class="btn btn-primary" href="https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01" target="_blank" rel="noopener noreferrer" style="width:100%;">Buy Now for $299</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="badge">After payment</div>
+          <h2>Exactly what happens next</h2>
+          <p>
+            This part is now built into the page so buyers know what to do immediately after checkout.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Complete payment</h3>
+            <p>Click any “Buy Now” button and finish checkout through Stripe using your secure payment link.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Submit project details</h3>
+            <p>Fill in the intake form with your business info, preferred style, and website goals.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Build begins immediately</h3>
+            <p>Once the payment and details are in, the site can move straight into the build process.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="start" class="section">
+      <div class="container">
+        <div class="intake-panel">
+          <div class="intake-copy">
+            <div class="badge">Start your website</div>
+            <h3>Send your project brief</h3>
+            <p>
+              This form helps collect everything needed to build your page faster. It does not process payment — the Stripe buttons above handle that.
+            </p>
+            <p>
+              Since this is a single HTML file with no backend connected, the form generates a ready-to-send project summary you can copy or send through email.
+            </p>
+            <div class="list">
+              <div class="list-item">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Best flow</strong>
+                  <span>Customer pays through Stripe, returns to this page, sees the success message, then submits the project brief.</span>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Recommended Stripe redirect</strong>
+                  <span>Set your success URL to: <br><strong>https://readytohireu.netlify.app/?payment=success</strong></span>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Project details email</strong>
+                  <span>All generated briefs are set to send to <strong>Sevada.Zadooryan@gmail.com</strong>.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:22px;">
+            <form id="projectForm" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Your Name</label>
+                  <input id="name" name="name" type="text" placeholder="John Smith" autocomplete="name" required />
+                </div>
+                <div class="field">
+                  <label for="email">Email Address</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="business">Business Name</label>
+                  <input id="business" name="business" type="text" placeholder="Your business or brand name" autocomplete="organization" />
+                </div>
+                <div class="field">
+                  <label for="industry">Industry / Niche</label>
+                  <input id="industry" name="industry" type="text" placeholder="Real estate, coaching, e-commerce, etc." />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="offer">What are you selling?</label>
+                <input id="offer" name="offer" type="text" placeholder="Describe your service, product, or offer" />
+              </div>
+
+              <div class="field">
+                <label for="audience">Who is the target audience?</label>
+                <input id="audience" name="audience" type="text" placeholder="Who should the site speak to?" />
+              </div>
+
+              <div class="field">
+                <label for="goal">Main website goal</label>
+                <select id="goal" name="goal">
+                  <option value="">Select one</option>
+                  <option>Generate leads</option>
+                  <option>Sell a product or service</option>
+                  <option>Book calls or appointments</option>
+                  <option>Build credibility / online presence</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="style">Preferred style</label>
+                <input id="style" name="style" type="text" placeholder="Minimal, modern, luxury, bold, clean, etc." />
+              </div>
+
+              <div class="field">
+                <label for="details">Extra details</label>
+                <textarea id="details" name="details" placeholder="Add anything important: colors, sections you want, CTA text, examples, deadlines, social links, etc."></textarea>
+              </div>
+
+              <div class="helper">
+                This form creates a ready-made message you can copy or send by email directly to <strong>Sevada.Zadooryan@gmail.com</strong>.
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-primary" id="generateBrief">Generate Project Brief</button>
+                <button type="button" class="btn btn-secondary" id="sendMail">Send by Email</button>
+                <a class="btn btn-dark" href="https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01" target="_blank" rel="noopener noreferrer">Pay with Stripe</a>
+              </div>
+
+              <div id="briefPreview" class="preview-box" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="badge">FAQ</div>
+          <h2>Common questions</h2>
+          <p>Everything important is now built into the page.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>How does payment work?</summary>
+            <div class="faq-content">
+              All main payment buttons on this page send visitors directly to your Stripe payment link for checkout.
+            </div>
+          </details>
+
+          <details>
+            <summary>What happens after someone pays?</summary>
+            <div class="faq-content">
+              After checkout, Stripe should redirect them back to this page using the success URL. A success notice appears, and they can immediately complete the project brief form.
+            </div>
+          </details>
+
+          <details>
+            <summary>Where do project details get sent?</summary>
+            <div class="faq-content">
+              The “Send by Email” button opens the visitor’s email app and sends the project brief to <strong>Sevada.Zadooryan@gmail.com</strong>.
+            </div>
+          </details>
+
+          <details>
+            <summary>Does this form automatically submit to a database?</summary>
+            <div class="faq-content">
+              Not by itself. This is a true single HTML file, so there is no backend attached. The form currently generates a formatted message and can open the user’s email app. For full automatic storage, you would connect Formspree, Netlify Forms, or another backend later.
+            </div>
+          </details>
+
+          <details>
+            <summary>Can I still use this right away?</summary>
+            <div class="faq-content">
+              Yes. Payment is already integrated, and the intake flow is usable immediately. The only thing that is not fully automated is saving form submissions to a server.
+            </div>
+          </details>
+
+          <details>
+            <summary>What Stripe redirect URL should I set?</summary>
+            <div class="faq-content">
+              Set the success URL to <strong>https://readytohireu.netlify.app/?payment=success</strong> and the cancel URL to <strong>https://readytohireu.netlify.app/?payment=cancel</strong>.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div>© 2026 Ready To Hire U. All rights reserved.</div>
+      <div>Fast website builds for businesses that want to launch now.</div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta">
+    <div>
+      <strong>Launch your website fast</strong>
+      <span>One-time payment • 48-hour delivery</span>
+    </div>
+    <a class="btn btn-primary" href="https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01" target="_blank" rel="noopener noreferrer">Buy Now</a>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const INTAKE_EMAIL = 'Sevada.Zadooryan@gmail.com';
+
+      const params = new URLSearchParams(window.location.search);
+      const payment = params.get('payment');
+
+      const successBox = document.getElementById('paymentSuccess');
+      const cancelBox = document.getElementById('paymentCancel');
+      const startSection = document.getElementById('start');
+
+      if (payment === 'success' && successBox) {
+        successBox.style.display = 'block';
+
+        window.requestAnimationFrame(function () {
+          window.setTimeout(function () {
+            if (startSection) {
+              startSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 300);
+        });
+      }
+
+      if (payment === 'cancel' && cancelBox) {
+        cancelBox.style.display = 'block';
+      }
+
+      const generateBtn = document.getElementById('generateBrief');
+      const sendMailBtn = document.getElementById('sendMail');
+      const preview = document.getElementById('briefPreview');
+      const form = document.getElementById('projectForm');
+
+      if (!generateBtn || !sendMailBtn || !preview || !form) return;
+
+      const fields = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        business: document.getElementById('business'),
+        industry: document.getElementById('industry'),
+        offer: document.getElementById('offer'),
+        audience: document.getElementById('audience'),
+        goal: document.getElementById('goal'),
+        style: document.getElementById('style'),
+        details: document.getElementById('details')
+      };
+
+      function sanitize(value) {
+        return String(value || '').trim();
+      }
+
+      function getFormData() {
+        return {
+          name: sanitize(fields.name && fields.name.value),
+          email: sanitize(fields.email && fields.email.value),
+          business: sanitize(fields.business && fields.business.value),
+          industry: sanitize(fields.industry && fields.industry.value),
+          offer: sanitize(fields.offer && fields.offer.value),
+          audience: sanitize(fields.audience && fields.audience.value),
+          goal: sanitize(fields.goal && fields.goal.value),
+          style: sanitize(fields.style && fields.style.value),
+          details: sanitize(fields.details && fields.details.value)
+        };
+      }
+
+      function validateRequired() {
+        const requiredFields = [fields.name, fields.email];
+        for (const field of requiredFields) {
+          if (field && !field.value.trim()) {
+            field.focus();
+            field.reportValidity();
+            return false;
+          }
+        }
+
+        if (fields.email && fields.email.value && !fields.email.checkValidity()) {
+          fields.email.focus();
+          fields.email.reportValidity();
+          return false;
+        }
+
+        return true;
+      }
+
+      function buildBrief() {
+        const data = getFormData();
+
+        return (
+`NEW WEBSITE PROJECT BRIEF
+
+Name: ${data.name || 'N/A'}
+Email: ${data.email || 'N/A'}
+Business Name: ${data.business || 'N/A'}
+Industry / Niche: ${data.industry || 'N/A'}
+Offer: ${data.offer || 'N/A'}
+Target Audience: ${data.audience || 'N/A'}
+Main Goal: ${data.goal || 'N/A'}
+Preferred Style: ${data.style || 'N/A'}
+
+Extra Details:
+${data.details || 'N/A'}
+`
+        );
+      }
+
+      function showPreview() {
+        const brief = buildBrief();
+        preview.style.display = 'block';
+        preview.textContent = brief;
+      }
+
+      generateBtn.addEventListener('click', function () {
+        if (!validateRequired()) return;
+        showPreview();
+      }, { passive: true });
+
+      sendMailBtn.addEventListener('click', function () {
+        if (!validateRequired()) return;
+
+        const brief = buildBrief();
+        preview.style.display = 'block';
+        preview.textContent = brief;
+
+        const subject = encodeURIComponent('New Website Project Brief');
+        const body = encodeURIComponent(brief);
+        const mailtoUrl = `mailto:${INTAKE_EMAIL}?subject=${subject}&body=${body}`;
+
+        window.location.href = mailtoUrl;
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
