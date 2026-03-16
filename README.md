@@ -1,2 +1,0 @@
-# ReadyHire
-Hiring Coach
