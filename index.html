@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HireReady AI — Ace Your Next Interview</title>
+  <meta name="description" content="Paste any job description and get a complete interview playbook in 30 seconds." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#0D0D0D;color:#E8E8E8;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+    #root{min-height:100vh}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:#111}
+    ::-webkit-scrollbar-thumb{background:#C9A84C55;border-radius:4px}
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const {useState, useRef} = React;
+
+const STRIPE = {
+  tip:      "https://buy.stripe.com/3cIdR9ep59IG0XN8Ce7bW00",
+  coaching: "https://buy.stripe.com/3cIdR9ep59IG0XN8Ce7bW00",
+};
+
+const A = "#C9A84C";
+const TABS = ["Interview Q&A","Salary Script","Red Flags","Follow-Up Email"];
+
+const css = `
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes gShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes glow{0%,100%{box-shadow:0 0 0px #C9A84C22}50%{box-shadow:0 0 28px #C9A84C33}}
+.au{animation:fadeUp .7s ease both}
+.au1{animation:fadeUp .7s .15s ease both;opacity:0;animation-fill-mode:forwards}
+.au2{animation:fadeUp .7s .3s ease both;opacity:0;animation-fill-mode:forwards}
+.au3{animation:fadeUp .7s .45s ease both;opacity:0;animation-fill-mode:forwards}
+.gold{background:linear-gradient(135deg,#C9A84C,#F0D080,#C9A84C,#A07830);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gShift 4s ease infinite}
+.card{background:#141414;border:1px solid #2A2A2A;border-radius:16px;transition:border-color .3s,box-shadow .3s}
+.card:hover{border-color:#C9A84C33;box-shadow:0 6px 36px rgba(201,168,76,.05)}
+.btn-g{background:linear-gradient(135deg,#C9A84C,#E8C060);color:#0D0D0D;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;transition:all .2s;letter-spacing:.02em}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.35)}
+.btn-g:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.btn-o{background:transparent;color:#C9A84C;border:1px solid #C9A84C44;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.875rem;cursor:pointer;transition:all .2s;padding:10px 20px}
+.btn-o:hover{background:#C9A84C11;border-color:#C9A84C}
+textarea,input{background:#1A1A1A;border:1px solid #2A2A2A;color:#E8E8E8;font-family:'DM Sans',sans-serif;font-size:.9rem;border-radius:10px;padding:14px 16px;width:100%;resize:none;outline:none;transition:border-color .2s,box-shadow .2s;line-height:1.6}
+textarea:focus,input:focus{border-color:#C9A84C55;box-shadow:0 0 0 3px #C9A84C12}
+textarea::placeholder,input::placeholder{color:#444}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#C9A84C;animation:pulse 1.2s ease infinite}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#C9A84C18;border:1px solid #C9A84C33;color:#C9A84C;font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:100px;letter-spacing:.06em}
+.lbl{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;margin-bottom:8px}
+.qb{margin-bottom:16px;padding:16px;background:#181818;border-radius:10px;border-left:3px solid #C9A84C55}
+.rb{padding:22px;border-radius:14px;background:#111;border:1px solid #2A2A2A;margin-bottom:14px;animation:fadeUp .4s ease both}
+.rb h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:#C9A84C;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2A2A2A}
+.pbar{height:3px;background:linear-gradient(90deg,#C9A84C,#F0D080);border-radius:3px;transition:width .3s ease}
+.tab{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;padding:9px 16px;border-radius:8px;transition:all .2s;flex:1}
+.upsell{background:linear-gradient(135deg,#1A1500,#201A00);border:1px solid #C9A84C44;border-radius:16px;padding:28px;text-align:center;position:relative;overflow:hidden;animation:glow 3s ease infinite}
+.upsell::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,#C9A84C09 0%,transparent 60%);pointer-events:none}
+.stat{background:#111;border:1px solid #2A2A2A;border-radius:12px;padding:18px;text-align:center}
+.sn{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#C9A84C;line-height:1}
+.sl{font-size:.72rem;color:#555;margin-top:4px}
+.noise{position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+`;
+
+function App() {
+  const [job, setJob] = useState("");
+  const [bg, setBg] = useState("");
+  const [tab, setTab] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [prog, setProg] = useState(0);
+  const [res, setRes] = useState(null);
+  const [err, setErr] = useState("");
+  const ref = useRef(null);
+
+  const wc = t => t.trim().split(/\s+/).filter(Boolean).length;
+
+  const run = async () => {
+    if (wc(job) < 20) { setErr("Please paste a more complete job description (at least 20 words)."); return; }
+    setErr(""); setLoading(true); setRes(null); setProg(10);
+    const iv = setInterval(() => setProg(p => Math.min(p + 7, 88)), 400);
+    try {
+      const prompt = `You are an elite career coach. Analyze this job application and return ONLY valid JSON with no markdown and no backticks.
+JOB: ${job}
+BACKGROUND: ${bg || "Not provided."}
+Return EXACTLY this structure:
+{"role":"title","company":"company name or the company","questions":[{"q":"question","a":"3-4 sentence STAR answer","type":"behavioral|technical|situational|culture"}],"salaryScript":{"opening":"...","anchor":"...","counter":"...","close":"..."},"redFlags":[{"flag":"...","why":"...","fix":"..."}],"followUp":{"subject":"...","body":"..."},"winningEdge":"one sentence"}
+Include exactly 8 questions and 5 red flags.`;
+
+      const r = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1000,
+          messages: [{ role: "user", content: prompt }]
+        })
+      });
+      const d = await r.json();
+      const txt = (d.content || []).map(i => i.text || "").join("").replace(/```json|```/g, "").trim();
+      setRes(JSON.parse(txt));
+      setProg(100);
+      setTimeout(() => ref.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+    } catch(e) {
+      setErr("Something went wrong. Please try again.");
+    } finally {
+      clearInterval(iv);
+      setLoading(false);
+    }
+  };
+
+  const reset = () => { setRes(null); setJob(""); setBg(""); setProg(0); setTab(0); };
+
+  return (
+    <React.Fragment>
+      <style>{css}</style>
+      <div className="noise" />
+      <div style={{position:"relative",zIndex:1,minHeight:"100vh",padding:"0 16px 80px"}}>
+
+        <header style={{maxWidth:780,margin:"0 auto",padding:"32px 0 0",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10}}>
+            <div style={{width:30,height:30,background:"linear-gradient(135deg,#C9A84C,#E8C060)",borderRadius:7,display:"flex",alignItems:"center",justifyContent:"center",fontSize:15}}>⚡</div>
+            <span style={{fontFamily:"'Playfair Display',serif",fontWeight:700,fontSize:"1.2rem"}}>HireReady<span className="gold">AI</span></span>
+          </div>
+          <a href={STRIPE.tip} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+            <button className="btn-o">☕ Buy me a coffee</button>
+          </a>
+        </header>
+
+        {!res && (
+          <section style={{maxWidth:780,margin:"0 auto",padding:"56px 0 44px"}}>
+            <div className="chip au" style={{marginBottom:20}}>✦ AI-Powered · Free to Use</div>
+            <h1 className="au1" style={{fontFamily:"'Playfair Display',serif",fontWeight:900,fontSize:"clamp(2.2rem,5.5vw,4rem)",lineHeight:1.08,letterSpacing:"-.02em"}}>
+              Land your next job.<br/><span className="gold">Outperform everyone</span><br/>in the room.
+            </h1>
+            <p className="au2" style={{color:"#666",fontSize:"1rem",marginTop:18,maxWidth:460,lineHeight:1.75}}>
+              Paste any job description. Get tailored interview answers, a salary script, red flags to dodge, and a follow-up email in 30 seconds.
+            </p>
+            <div className="au3" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,margin:"36px 0"}}>
+              {[["47K+","Interviews Prepped"],["94%","Satisfaction Rate"],["3×","Offer Rate Increase"]].map(([n,l]) => (
+                <div className="stat" key={l}><div className="sn">{n}</div><div className="sl">{l}</div></div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {!res && (
+          <div style={{maxWidth:780,margin:"0 auto"}} className="au3">
+            <div className="card" style={{padding:28}}>
+              <div style={{marginBottom:22}}>
+                <div className="lbl">Job Description *</div>
+                <textarea value={job} onChange={e => setJob(e.target.value)} rows={7} placeholder="Paste the full job posting here..." />
+                <div style={{textAlign:"right",fontSize:".72rem",color:"#444",marginTop:5}}>
+                  {wc(job)} words {wc(job) > 0 && wc(job) < 20 && <span style={{color:"#E57373"}}>— needs more detail</span>}
+                </div>
+              </div>
+              <div style={{marginBottom:26}}>
+                <div className="lbl">Your Background <span style={{textTransform:"none",letterSpacing:0,fontSize:".72rem",color:"#444"}}>(optional)</span></div>
+                <textarea value={bg} onChange={e => setBg(e.target.value)} rows={4} placeholder="Years of experience, skills, past roles..." />
+              </div>
+              {err && (
+                <div style={{background:"#1A0A0A",border:"1px solid #C0392B44",borderRadius:10,padding:"12px 16px",color:"#E57373",fontSize:".85rem",marginBottom:18}}>⚠ {err}</div>
+              )}
+              <button className="btn-g" onClick={run} disabled={loading} style={{width:"100%",padding:"15px"}}>
+                {loading
+                  ? <span style={{display:"flex",alignItems:"center",justifyContent:"center",gap:10}}>
+                      <span className="dot" style={{animationDelay:"0s"}} />
+                      <span className="dot" style={{animationDelay:".2s"}} />
+                      <span className="dot" style={{animationDelay:".4s"}} />
+                      <span style={{marginLeft:4}}>Preparing your playbook...</span>
+                    </span>
+                  : "⚡ Generate My Interview Playbook →"
+                }
+              </button>
+              {loading && (
+                <div style={{marginTop:14}}>
+                  <div style={{background:"#1A1A1A",borderRadius:4,overflow:"hidden",height:3}}>
+                    <div className="pbar" style={{width:`${prog}%`}} />
+                  </div>
+                  <div style={{textAlign:"center",fontSize:".72rem",color:"#444",marginTop:7}}>
+                    {prog < 30 ? "Analyzing job requirements..." : prog < 60 ? "Crafting interview answers..." : prog < 85 ? "Building your salary script..." : "Almost ready..."}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {res && (
+          <div ref={ref} style={{maxWidth:780,margin:"0 auto"}}>
+            <div style={{padding:"48px 0 28px"}} className="au">
+              <div className="chip" style={{marginBottom:14}}>✦ Your Playbook is Ready</div>
+              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(1.5rem,4vw,2.3rem)",fontWeight:700,marginBottom:8}}>
+                {res.role} <span style={{color:"#444"}}>at</span> <span className="gold">{res.company}</span>
+              </h2>
+              {res.winningEdge && (
+                <div style={{background:"#1A1500",border:"1px solid #C9A84C33",borderRadius:10,padding:"13px 17px",marginTop:14,fontSize:".9rem",color:"#D4A840",lineHeight:1.7}}>
+                  <strong>🎯 Your Winning Edge:</strong> {res.winningEdge}
+                </div>
+              )}
+            </div>
+
+            <div style={{display:"flex",gap:4,marginBottom:22,background:"#111",border:"1px solid #2A2A2A",borderRadius:12,padding:4,flexWrap:"wrap"}}>
+              {TABS.map((t,i) => (
+                <button key={t} className="tab" onClick={() => setTab(i)} style={{
+                  color: tab===i ? "#0D0D0D" : "#555",
+                  background: tab===i ? "linear-gradient(135deg,#C9A84C,#E8C060)" : "transparent",
+                  fontWeight: tab===i ? 600 : 400
+                }}>{t}</button>
+              ))}
+            </div>
+
+            {tab === 0 && res.questions && res.questions.map((item,i) => (
+              <div key={i} className="qb">
+                <div style={{fontWeight:600,color:"#E8E8E8",marginBottom:8,fontSize:".9rem"}}>
+                  <span style={{color:A,fontFamily:"'Playfair Display',serif",marginRight:8}}>{i+1}.</span>
+                  {item.q}
+                  <span style={{marginLeft:10,background:"#C9A84C18",color:A,fontSize:".62rem",padding:"2px 9px",borderRadius:100,fontWeight:600,letterSpacing:".05em",textTransform:"uppercase"}}>{item.type}</span>
+                </div>
+                <div style={{color:"#888",fontSize:".87rem",lineHeight:1.75}}>💬 {item.a}</div>
+              </div>
+            ))}
+
+            {tab === 1 && res.salaryScript && [
+              ["🎤 Opening Line", res.salaryScript.opening],
+              ["⚓ Anchor High", res.salaryScript.anchor],
+              ["🔄 Counter a Lowball", res.salaryScript.counter],
+              ["🔒 Close the Deal", res.salaryScript.close]
+            ].map(([l,t]) => (
+              <div key={l} className="rb"><h3>{l}</h3><p style={{color:"#888",lineHeight:1.8,fontSize:".9rem"}}>{t}</p></div>
+            ))}
+
+            {tab === 2 && res.redFlags && res.redFlags.map((item,i) => (
+              <div key={i} className="rb" style={{borderLeft:"3px solid #C0392B44"}}>
+                <h3 style={{color:"#E57373"}}>⚠ {item.flag}</h3>
+                <p style={{color:"#888",fontSize:".85rem",marginBottom:9}}><strong style={{color:"#AAA"}}>Why it kills you:</strong> {item.why}</p>
+                <p style={{color:"#7EC8A0",fontSize:".85rem"}}><strong>✓ Fix:</strong> {item.fix}</p>
+              </div>
+            ))}
+
+            {tab === 3 && res.followUp && (
+              <React.Fragment>
+                <div className="rb"><h3>📧 Subject Line</h3><p style={{color:"#E8E8E8",fontWeight:500}}>{res.followUp.subject}</p></div>
+                <div className="rb"><h3>✉️ Email Body</h3><p style={{color:"#888",lineHeight:1.9,fontSize:".88rem",whiteSpace:"pre-line"}}>{res.followUp.body}</p></div>
+              </React.Fragment>
+            )}
+
+            <div className="upsell" style={{marginTop:32}}>
+              <div style={{fontSize:"1.5rem",marginBottom:10}}>🎯</div>
+              <h3 style={{fontFamily:"'Playfair Display',serif",fontSize:"1.4rem",marginBottom:10}}>
+                Want a <span className="gold">live mock interview</span>?
+              </h3>
+              <p style={{color:"#666",fontSize:".88rem",maxWidth:420,margin:"0 auto 22px",lineHeight:1.75}}>
+                Book a 1-on-1 coaching session. Real feedback, body language tips, and a 30-day offer-ready plan.
+              </p>
+              <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+                <a href={STRIPE.coaching} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                  <button className="btn-g" style={{padding:"13px 28px"}}>Book a Coaching Session →</button>
+                </a>
+                <button className="btn-o" onClick={reset}>← Prep Another Role</button>
+              </div>
+              <div style={{marginTop:20,paddingTop:20,borderTop:"1px solid #2A2A2A"}}>
+                <p style={{color:"#444",fontSize:".8rem",marginBottom:12}}>Free tool. If it helped, a coffee keeps it alive ☕</p>
+                <a href={STRIPE.tip} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                  <button className="btn-o" style={{fontSize:".8rem",padding:"8px 18px"}}>☕ Buy me a coffee</button>
+                </a>
+              </div>
+            </div>
+
+            <div style={{textAlign:"center",marginTop:24}}>
+              <button onClick={reset} style={{background:"none",border:"none",color:"#333",cursor:"pointer",fontSize:".8rem"}}>← Start over</button>
+            </div>
+          </div>
+        )}
+
+        <footer style={{maxWidth:780,margin:"60px auto 0",paddingTop:24,borderTop:"1px solid #2A2A2A",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
+          <span style={{fontFamily:"'Playfair Display',serif",fontWeight:700,fontSize:".95rem"}}>HireReady<span className="gold">AI</span></span>
+          <span style={{color:"#333",fontSize:".75rem"}}>© 2025 HireReadyAI · Free · Powered by Claude AI</span>
+        </footer>
+
+      </div>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
