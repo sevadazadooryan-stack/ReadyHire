@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamGrok AI — Powered by Grok</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; }
+    .dream-input { resize: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <nav class="bg-black/50 backdrop-blur p-6">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold flex items-center gap-2"><i class="fas fa-moon text-purple-400"></i> DreamGrok</h1>
+      <a href="https://x.ai" target="_blank" class="text-purple-400 hover:underline">Powered by Grok • xAI</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-5xl font-bold mb-4">What did you dream last night?</h2>
+    <p class="text-xl text-purple-300 mb-10">Get a hilarious, truthful interpretation from Grok — instant after payment</p>
+
+    <div class="bg-white/10 backdrop-blur-xl p-8 rounded-3xl shadow-2xl max-w-2xl mx-auto">
+      <textarea id="dream" rows="6" class="dream-input w-full bg-black/50 border border-purple-500 rounded-2xl p-6 text-lg focus:outline-none focus:border-purple-400" placeholder="I was flying over a city made of candy..."></textarea>
+      
+      <button onclick="payNow()" 
+              class="mt-8 w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-6 rounded-2xl text-2xl font-bold transition-all active:scale-95">
+        Pay via Stripe & Unlock Interpretation
+      </button>
+      <p class="text-xs text-purple-300 mt-4">Secure • Instant delivery • Your Stripe link</p>
+    </div>
+  </main>
+
+  <footer class="text-center py-8 text-purple-300 text-sm">
+    © DreamGrok AI • For entertainment only
+  </footer>
+
+  <script>
+    function payNow() {
+      const dream = document.getElementById('dream').value.trim();
+      if (!dream || dream.length < 15) return alert("Please describe your dream (15+ characters).");
+      
+      localStorage.setItem('pendingDream', dream);
+      window.location.href = "https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01";
+    }
+  </script>
+</body>
+</html>
