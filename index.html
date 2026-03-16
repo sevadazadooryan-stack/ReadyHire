@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickSite Builder • Tell Me Your Idea First</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; }
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat; }
+    .section { transition: all 0.4s ease; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+  <!-- NAV -->
+  <nav class="bg-black/70 backdrop-blur-lg fixed w-full z-50">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3 text-2xl font-bold">
+        <i class="fas fa-rocket text-purple-500"></i> QuickSite Builder
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-bg h-screen flex items-center justify-center text-center pt-20">
+    <div class="max-w-4xl px-6">
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        Tell me your idea.<br>I’ll build it.
+      </h1>
+      <p class="text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+        Describe the revenue-generating website you want.<br>Pay only after you explain it.
+      </p>
+    </div>
+  </header>
+
+  <!-- FORM SECTION -->
+  <div id="formSection" class="max-w-3xl mx-auto px-6 -mt-20 relative z-10 pb-20 section">
+    <div class="bg-white/10 backdrop-blur-2xl p-10 md:p-16 rounded-3xl border border-white/10 shadow-2xl">
+      <h2 class="text-3xl font-bold mb-8 text-center">Describe Your Dream Website</h2>
+      
+      <form id="briefForm">
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div>
+            <label class="block text-sm mb-2 font-medium">Full Name</label>
+            <input type="text" id="name" required class="w-full bg-black/60 border border-purple-500 rounded-2xl p-5 focus:outline-none focus:border-purple-400 text-lg">
+          </div>
+          <div>
+            <label class="block text-sm mb-2 font-medium">Email Address</label>
+            <input type="email" id="email" required class="w-full bg-black/60 border border-purple-500 rounded-2xl p-5 focus:outline-none focus:border-purple-400 text-lg">
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label class="block text-sm mb-2 font-medium">Your Project Brief <span class="text-purple-400">(the more detail the better)</span></label>
+          <textarea id="brief" rows="8" required placeholder="Example: I want a single-page AI dream interpreter site with my own Stripe link integrated..." 
+                    class="w-full bg-black/60 border border-purple-500 rounded-3xl p-6 focus:outline-none focus:border-purple-400 text-lg"></textarea>
+        </div>
+
+        <button type="button" onclick="submitIdeaAndPay()" 
+                class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-7 rounded-2xl text-2xl font-bold transition-all active:scale-95">
+          Submit Idea & Pay $299 Securely with Stripe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SUCCESS SECTION (hidden until payment) -->
+  <div id="successSection" class="hidden max-w-3xl mx-auto px-6 py-20 section">
+    <div class="bg-white/10 backdrop-blur-2xl p-10 md:p-16 rounded-3xl border border-white/10 shadow-2xl text-center">
+      <i class="fas fa-check-circle text-7xl text-green-400 mb-8"></i>
+      <h1 class="text-5xl font-bold mb-4">Payment Received – Thank You!</h1>
+      <p class="text-xl text-gray-300 mb-10">I now have your idea and payment. Here’s exactly what you submitted:</p>
+
+      <div class="bg-black/60 p-8 rounded-3xl text-left mb-12 border border-purple-500">
+        <h3 class="text-purple-300 font-medium mb-4">YOUR PROJECT BRIEF</h3>
+        <div id="displayBrief" class="whitespace-pre-wrap text-lg leading-relaxed"></div>
+      </div>
+
+      <p class="text-2xl font-medium text-green-400 mb-8">✓ Your brief has been automatically sent to me.<br>I will email you within 24 hours with your finished site.</p>
+      
+      <button onclick="window.location.href='/'" 
+              class="bg-purple-600 hover:bg-purple-700 px-10 py-4 rounded-2xl text-lg font-bold">
+        Start Another Project
+      </button>
+    </div>
+  </div>
+
+  <!-- HIDDEN NETLIFY FORM (auto-sends brief to you) -->
+  <form name="project-brief" method="POST" data-netlify="true" class="hidden">
+    <input type="hidden" name="form-name" value="project-brief">
+    <input type="hidden" id="hiddenName" name="name">
+    <input type="hidden" id="hiddenEmail" name="email">
+    <input type="hidden" id="hiddenBrief" name="brief">
+  </form>
+
+  <footer class="text-center py-12 text-gray-400 text-sm">
+    © 2026 QuickSite Builder • Secure payments by Stripe • 48-hour delivery guarantee
+  </footer>
+
+  <script>
+    function submitIdeaAndPay() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const brief = document.getElementById('brief').value.trim();
+
+      if (!name || !email || brief.length < 30) {
+        alert("Please complete all fields and give a detailed brief (at least 30 characters).");
+        return;
+      }
+
+      const data = { name, email, brief, timestamp: new Date().toISOString() };
+      localStorage.setItem('clientProject', JSON.stringify(data));
+
+      window.location.href = "https://buy.stripe.com/8x27sLgxd6wu21Rf0C7bW01";
+    }
+
+    // Handle success page after Stripe redirect
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.location.search.includes('success=true')) {
+        const formSection = document.getElementById('formSection');
+        const successSection = document.getElementById('successSection');
+        
+        formSection.classList.add('hidden');
+        successSection.classList.remove('hidden');
+
+        const stored = localStorage.getItem('clientProject');
+        if (stored) {
+          const data = JSON.parse(stored);
+          document.getElementById('displayBrief').innerHTML = `
+            <strong>Name:</strong> ${data.name}<br><br>
+            <strong>Email:</strong> ${data.email}<br><br>
+            <strong>Brief:</strong><br>${data.brief.replace(/\n/g, '<br>')}
+          `;
+
+          // Auto-send to you via Netlify Forms
+          document.getElementById('hiddenName').value = data.name;
+          document.getElementById('hiddenEmail').value = data.email;
+          document.getElementById('hiddenBrief').value = data.brief;
+          document.querySelector('form[name="project-brief"]').submit();
+
+          localStorage.removeItem('clientProject');
+        } else {
+          document.getElementById('displayBrief').innerHTML = "<p class='text-red-400'>No brief found – please contact me if you already paid.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
